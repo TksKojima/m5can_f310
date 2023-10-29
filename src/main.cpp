@@ -23,7 +23,7 @@ int can_tx_test = 0;
 int can_show_mode = 0;
 
 int  sens_val  = 0;
-int  sens_id   = 0x129; 
+int  sens_id   = 0x63; 
 char sens_dlc   = 6;
 int  sens_cycle = 50;
 

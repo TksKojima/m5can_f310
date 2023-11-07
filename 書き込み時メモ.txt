@@ -1,0 +1,17 @@
+・F310のライブラリは↓より
+https://github.com/AlanFord/Logitech_F310_and_Arduino
+
+・platformio.iniによりライブラリ
+\m5can_f310\.pio\libdeps\m5stack-core-esp32\USB-Host-Shield-20
+が自動でインストールされるが、Usb.cppにバグがあるので置き換える必要がある。
+
+フォルダトップにあるUsb.cppをコピーするか
+　https://github.com/felis/USB_Host_Shield_2.0/pull/438
+から拾ってくる。
+
+
+lf310.cpp　は以下を変更している
+    if (lf310Data.btn.val != oldButtonState.val) { // Check if anything has changed
+        // buttonClickState.val = lf310Data.btn.val & ~oldButtonState.val; // Update click state variable
+        // 23.10.18 change 
+        buttonClickState.val = lf310Data.btn.val;// & ~oldButtonState.val; // Update click state variable
